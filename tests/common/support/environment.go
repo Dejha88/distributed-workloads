@@ -55,12 +55,14 @@ const (
 	storageDefaultRegion         = "AWS_DEFAULT_REGION"
 	storageAccessKeyId           = "AWS_ACCESS_KEY_ID"
 	storageSecretKey             = "AWS_SECRET_ACCESS_KEY"
+	storageSessionToken          = "AWS_SESSION_TOKEN"
 	storageBucketName            = "AWS_STORAGE_BUCKET"
 	storageBucketMnistDir        = "AWS_STORAGE_BUCKET_MNIST_DIR"
 	storageBucketFashionMnistDir = "AWS_STORAGE_BUCKET_FASHION_MNIST_DIR"
 	storageBucketOsftDir         = "AWS_STORAGE_BUCKET_OSFT_DIR"
 	storageBucketSftDir          = "AWS_STORAGE_BUCKET_SFT_DIR"
-
+	storageBucketLoraDir         = "AWS_STORAGE_BUCKET_LORA_DIR"
+	
 	// Name of existing namespace to be used for test
 	testNamespaceNameEnvVar = "TEST_NAMESPACE_NAME"
 )
@@ -172,6 +174,11 @@ func GetStorageBucketSecretKey() (string, bool) {
 	return storage_secret_key, exists
 }
 
+func GetStorageBucketSessionToken() (string, bool) {
+	storage_session_token, exists := os.LookupEnv(storageSessionToken)
+	return storage_session_token, exists
+}
+
 func GetStorageBucketName() (string, bool) {
 	storage_bucket_name, exists := os.LookupEnv(storageBucketName)
 	return storage_bucket_name, exists
@@ -190,6 +197,11 @@ func GetStorageBucketFashionMnistDir() (string, bool) {
 func GetStorageBucketOsftDir() (string, bool) {
 	storage_bucket_osft_dir, exists := os.LookupEnv(storageBucketOsftDir)
 	return storage_bucket_osft_dir, exists
+}
+
+func GetStorageBucketLoraDir() (string, bool) {
+	storage_bucket_lora_dir, exists := os.LookupEnv(storageBucketLoraDir)
+	return storage_bucket_lora_dir, exists
 }
 
 func GetStorageBucketSftDir() (string, bool) {
